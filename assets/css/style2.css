@@ -1,0 +1,158 @@
+@import url(common.css);
+
+/* 폰트 사이즈 정리*/
+.b2 {
+    font-family: var(--font-base);
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.b4 {
+    font-family: var(--font-base);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.b3 {
+    font-family: var(--font-base);
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.b8 {
+    font-family: var(--font-base);
+    font-size: 22px;
+    font-weight: 400;
+}
+
+/* 폰트 사이즈 */
+
+/* 헤더 영역 및 네비영역 */
+.header {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/kv-img.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header-inner {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 30px 24px 0;
+    box-sizing: border-box;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    color: #fff;
+    gap: 35px;
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.menu-btn img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.main-title {
+    padding-top: 90px;
+}
+
+.title {
+    text-align: right;
+    padding: 50px 0;
+}
+
+.kv-title {
+    color: #A2D3F1;
+    padding: 50px 0;
+}
+
+.kv-subtitle {
+    color: #fff;
+}
+
+.btn {
+    text-align: right;
+}
+
+.btn1 {
+    background: #AEDAFF;
+    padding: 30px 30px;
+    border-radius: 999px;
+    font-size: 2.5rem;
+}
+
+.btn2 {
+    background:
+        #AE6D59;
+    padding: 30px 30px;
+    border-radius: 999px;
+    font-size: 2.5rem;
+}
+
+@media(max-width: 768px) {
+    /* 모바일 kv 영역 시작 */
+    .header {
+        height: auto;
+        min-height: 100vh;
+        background-position: 20% center;
+    }
+
+    .header-inner {
+        padding: 8px 12px 0;
+    }
+    .nav{
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0;
+    }
+    .nav a{
+        display: none;
+    }
+    .menu-btn{
+        display: block;
+    }
+    .main-title{
+        padding-top: 80%;
+    }
+    .kv-title{
+        font-size: 40px;
+        text-align: center;
+    }
+    .kv-subtitle{
+        font-size: 30px;
+        text-align: center;
+    }
+    .btn{
+        display: flex;
+        justify-content: center;
+    }
+    .btn1,
+    .btn2{
+        font-size: 20px;
+        padding: 10px 10px;
+    }
+}
+/* 모바일 kv 영역 마감 */
+
+.about{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/sec2-bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
