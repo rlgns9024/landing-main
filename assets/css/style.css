@@ -1,6 +1,6 @@
 @import url(common.css);
 
-body{
+body {
     font-size: 20px;
 }
 
@@ -22,7 +22,7 @@ body{
     box-sizing: border-box;
 }
 
-.nav {  
+.nav {
     display: flex;
     justify-content: flex-end;
     color: #fff;
@@ -80,9 +80,11 @@ body{
     border-radius: 49.95rem;
     font-size: 2.5rem;
 }
+
 /* pc hero마감 */
 
 @media(max-width: 768px) {
+
     /* 모바일 kv 영역 시작 */
     .header {
         height: auto;
@@ -92,41 +94,52 @@ body{
     .header-inner {
         padding: 0.4rem 0.6rem 0;
     }
-    .nav{
+
+    .nav {
         justify-content: flex-end;
         align-items: center;
-        gap: 0;
     }
-    .nav a{
+
+    .nav a {
         display: none;
     }
-    .menu-btn{
+
+    .menu-btn {
         display: block;
     }
-    .main-title{
-        padding-top: 60%;
+
+    .main-title {
+        padding-top: 80%;
     }
-    .kv-title{
-        font-size: 2rem;
+
+    .kv-title {
+        font-size: 3rem;
         text-align: center;
     }
-    .kv-subtitle{
+
+    .kv-subtitle {
         font-size: 1.5rem;
         text-align: center;
     }
-    .btn{
+
+    .btn {
         display: flex;
         justify-content: center;
     }
+
     .btn1,
-    .btn2{
+    .btn2 {
         font-size: 1rem;
         padding: 0.5rem 0.5rem;
     }
 }
+
 /* 모바일 kv 영역 마감 */
 
-.about{
+
+/* about css 시작 */
+
+.about {
     width: 100%;
     background-image: url(../images/sec2-bg.webp);
     background-repeat: no-repeat;
@@ -135,5 +148,72 @@ body{
     margin-bottom: 110px;
 }
 
+.model-img {
+    width: 18rem;
+    margin-right: 12.5rem;
+}
 
-@media(max-width:768px)
+.about {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-title {
+    text-align: center;
+
+}
+em{
+    color:#A2D3F1   
+}
+.text-title .sub-title{
+    color: #fff;
+    font-size: 2rem;
+}
+.h2{
+    padding-top: 2rem;
+    color: #fff;
+}
+/* about css 마감 */
+/* about 반응형 시작 */
+@media(max-width:768px){
+    .about{
+        flex-direction: column-reverse;
+    }
+    .text-title{
+        margin-top: 5.5rem;
+    }
+    .text-title .sub-title{
+        font-size: 1rem;
+    }
+    .text-title .h2{
+        font-size: 1.5rem;
+    }
+
+}
+/* about 반응형 마감 */
+
+/* section3 시작 */
+
+.title-2{
+    text-align: center;
+    margin-top: 110px;
+    padding-bottom: 80px;
+}
+
+.lipo-area{
+    width: 100%;
+    max-width: 1350px;
+    margin: auto;
+}
+
+.lipo-list{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
