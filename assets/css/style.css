@@ -500,18 +500,20 @@ em {
 
 /* 가운데 컨텐츠 */
 .section5-inner {
-    width: 1320px;
+    width: 82.5rem; /* 1320px */
     height: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 /* 전체 숫자 영역 */
 .stats {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 2.5rem; /* 40px */
 }
 
 /* 한 줄 */
@@ -522,8 +524,8 @@ em {
 
 /* 주황 텍스트 */
 .label {
-    width: 290px;
-    font-size: 22px;
+    width: 18.125rem; /* 290px */
+    font-size: 1.375rem; /* 22px */
     font-weight: 400;
     color: #c26a4a;
     margin: 0;
@@ -532,13 +534,13 @@ em {
 /* 숫자 + 묶음 */
 .value-box {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    align-items: baseline;
+    gap: 1.25rem; /* 20px */
 }
 
 /* 숫자 */
 .num {
-    font-size: 80px;
+    font-size: 5rem; /* 80px */
     font-weight: 400;
     color: #fff;
     line-height: 1;
@@ -546,10 +548,11 @@ em {
 
 /* + */
 .plus {
-    font-size: 80px;
+    font-size: 5rem; /* 80px */
     font-weight: 400;
     color: #fff;
     line-height: 1;
+    transform: translateY(-0.02em);
 }
 
 /* 의사 이미지 */
@@ -558,11 +561,85 @@ em {
     top: 0;
     right: 0;
     bottom: 0;
+    width: 45%;
+    z-index: 1;
 }
 
 .doctor img {
     height: 100%;
-    width: auto;
+    width: 100%;
     display: block;
+    object-fit: cover;
+    object-position: right center;
 }
 /* section5 마감 */
+
+/* ===== Responsive: mobile base font 14px ===== */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    /* section3: 2칸, 2칸, 마지막 1칸은 풀 */
+    .lipo-area {
+        padding: 0 1rem;
+    }
+
+    .lipo-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .lipo-list .card-item:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* section5: 모바일 레이아웃 */
+    .section5 {
+        width: 100%;
+        height: auto;
+        min-height: 40rem;
+    }
+
+    .section5-inner {
+        width: 100%;
+        padding: 4.5rem 1.25rem 6rem;
+        align-items: flex-start;
+        z-index: 2;
+    }
+
+    .stats {
+        gap: 1.5rem;
+    }
+
+    .row {
+        align-items: baseline;
+    }
+
+    .label {
+        width: 10.5rem;
+        font-size: 1rem;
+    }
+
+    .num,
+    .plus {
+        font-size: 3.2rem;
+    }
+
+    .value-box {
+        gap: 0.75rem;
+    }
+
+    .doctor {
+        width: 100%;
+        opacity: 0.85;
+    }
+
+    .doctor img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center;
+    }
+}
