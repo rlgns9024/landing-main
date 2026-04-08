@@ -1,7 +1,7 @@
 @import url(common.css);
 
 body {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /* 헤더 영역 및 네비영역 */
@@ -83,62 +83,7 @@ body {
 
 /* pc hero마감 */
 
-@media(max-width: 768px) {
-
-    /* 모바일 kv 영역 시작 */
-    .header {
-        height: auto;
-        background-position: 20% center;
-    }
-
-    .header-inner {
-        padding: 0.4rem 0.6rem 0;
-    }
-
-    .nav {
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .nav a {
-        display: none;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .main-title {
-        padding-top: 80%;
-    }
-
-    .kv-title {
-        font-size: 3rem;
-        text-align: center;
-    }
-
-    .kv-subtitle {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    .btn {
-        display: flex;
-        justify-content: center;
-    }
-
-    .btn1,
-    .btn2 {
-        font-size: 1rem;
-        padding: 0.5rem 0.5rem;
-    }
-}
-
-/* 모바일 kv 영역 마감 */
-
-
 /* about css 시작 */
-
 .about {
     width: 100%;
     background-image: url(../images/sec2-bg.webp);
@@ -163,57 +108,384 @@ body {
     justify-content: center;
 }
 
-.text-title {
-    text-align: center;
+em {
+    color: #A2D3F1
+}
 
-}
-em{
-    color:#A2D3F1   
-}
-.text-title .sub-title{
+.text-title .sub-title {
     color: #fff;
     font-size: 2rem;
 }
-.h2{
+
+.h2 {
     padding-top: 2rem;
     color: #fff;
 }
-/* about css 마감 */
-/* about 반응형 시작 */
-@media(max-width:768px){
-    .about{
-        flex-direction: column-reverse;
-    }
-    .text-title{
-        margin-top: 5.5rem;
-    }
-    .text-title .sub-title{
-        font-size: 1rem;
-    }
-    .text-title .h2{
-        font-size: 1.5rem;
-    }
 
+.title-2 span {
+    font-weight: 700;
 }
-/* about 반응형 마감 */
+/* about css 마감 */
+
+
 
 /* section3 시작 */
 
-.title-2{
+.title-2 {
     text-align: center;
-    margin-top: 110px;
-    padding-bottom: 80px;
+    margin-top: 6.875rem;
+    padding-bottom: 5rem;
 }
 
-.lipo-area{
+.lipo-area {
     width: 100%;
-    max-width: 1350px;
+    max-width: 84.375rem;
     margin: auto;
 }
 
-.lipo-list{
+.lipo-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 1.25rem;
 }
+
+.lipo-title{
+    font-weight: 700;
+}
+.title-2 p {
+    font-size: 1.875rem;
+}
+
+.title-2 span {
+    font-size: 1.562rem;
+}
+/* section3  마감 */
+
+/* 장비 시스템 섹션 시작 */
+.equipment-section {
+    padding: 7.5rem 1.25rem;
+    background-color: #fff;
+}
+
+.equipment-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.equipment-heading {
+    text-align: center;
+    margin-bottom: 3.75rem;
+}
+
+.equipment-heading .b7 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.equipment-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3.75rem;
+}
+
+.equipment-item {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-items: stretch;
+    column-gap: 24px;
+    row-gap: 24px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.equipment-item.is-active {
+    display: grid;
+}
+
+.equipment-image {
+    grid-column: 1 / span 4;
+    display: flex;
+    justify-content: center;
+}
+
+.equipment-middle {
+    grid-column: 5 / span 3;
+    width: 100%;
+    max-width: 248px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+}
+
+.equipment-circle {
+    width: 13.5rem;
+    height: 13.5rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.equipment-circle--blue {
+    background: rgba(162, 211, 241, 0.35);
+    z-index: 1;
+}
+
+.equipment-circle--pink {
+    background: rgba(255, 186, 186, 0.4);
+    margin-top: -3.25rem;
+    z-index: 0;
+}
+
+.equipment-circle .b7 {
+    font-weight: 700;
+}
+
+.equipment-circle .b9 {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.equipment-circle-x {
+    margin-top: -2.75rem;
+    margin-bottom: -0.5rem;
+    z-index: 2;
+    font-size: 1.35rem;
+    color: #9A7B72;
+}
+
+.equipment-content {
+    grid-column: 8 / span 5;
+    padding-left: 2.25rem;
+}
+
+.equipment-text {
+    text-align: left;
+}
+
+.equipment-text .h3 {
+    margin-bottom: 1.25rem;
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+.equipment-text .b8 {
+    margin-bottom: 1.75rem;
+    line-height: 2.05;
+}
+
+.equipment-link-next {
+    display: inline-block;
+    margin-top: 0.25rem;
+    color: #A63B03;
+    font-weight: 600;
+}
+
+.equipment-link-next:hover {
+    text-decoration: underline;
+}
+/* 장비 시스템 섹션 마감 */
+
+/* section 4 시작 */
+
+@media (max-width: 768px) {
+    .equipment-section {
+        padding: 4.5rem 1rem;
+    }
+
+    .equipment-heading {
+        margin-bottom: 2.5rem;
+    }
+
+    /* 768px 폰트 규격 (px -> rem, base 16px) */
+    .equipment-heading .b7 {
+        font-size: 1.875rem; /* 30px */
+        line-height: 1.2;
+    }
+
+    .equipment-item.is-active {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 20px;
+    }
+
+    .equipment-image,
+    .equipment-middle,
+    .equipment-content {
+        grid-column: 1 / -1;
+    }
+
+    .equipment-image {
+        justify-content: center;
+    }
+
+    .equipment-middle {
+        /* 모바일에서는 원형 가로 배치 */
+        max-width: none;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .equipment-circle {
+        width: 11.5rem;
+        height: 11.5rem;
+    }
+
+    .equipment-circle--pink {
+        margin-top: 0;
+        margin-left: -3.25rem; /* 겹침 */
+    }
+
+    .equipment-circle-x {
+        margin: 0 -0.75rem;
+    }
+
+    .equipment-circle .b7 {
+        font-size: 1.5625rem; /* 25px */
+        line-height: 1.2;
+    }
+
+    .equipment-link-next {
+        font-size: 1.5625rem; /* 25px */
+        line-height: 1.2;
+    }
+
+    .equipment-content {
+        padding-left: 0;
+        padding-top: 0.5rem;
+    }
+
+    .equipment-text .h3 {
+        font-size: 2rem;
+    }
+
+    /* 모바일 서브텍스트: 18px, 2줄로 보이게 */
+    .equipment-text .b8 {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    .equipment-br--desktop {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width: 768px) {
+
+    /* 모바일 kv 영역 시작 */
+    .header {
+        height: 100vh;
+        background-position: 20% center;
+    }
+
+    .header-inner {
+        padding: 0.4rem 0.6rem 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav {
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav a {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .main-title {
+        padding-top: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding-bottom: 12vh;
+    }
+
+    .title {
+        padding: 0;
+    }
+
+    .kv-title {
+        font-size: 3rem;
+        text-align: center;
+        padding: 1.25rem 0; /* 20px */
+    }
+
+    .kv-subtitle {
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 1.25rem 0; /* 20px */
+    }
+
+    .btn {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 1.25rem 0; /* 20px */
+    }
+
+    .btn1,
+    .btn2 {
+        font-size: 1rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    
+/* 반응형 kv 영역 마감 */
+
+
+    .about {
+        flex-direction: column-reverse;
+    }
+
+    .text-title {
+        margin-top: 5.5rem;
+    }
+
+    .text-title .sub-title {
+        font-size: 1rem;
+    }
+
+    .text-title .h2 {
+        font-size: 1.5rem;
+    }
+    /* about 반응형 마감 */
+}
+
+
+
+
+
+
+
+
+/* about 반응형 시작 */
+@media(max-width:768px) {
+    
+
+}
+

@@ -1,224 +1,175 @@
-/* ===========================
-   COMMON CSS
-   Design Tokens & Utilities
-   단위 기준: 1rem = 16px (PC html font-size 100%)
-   Tablet ≤1024px : html 87.5% → 1rem = 14px → b1 = 14px
-   Mobile ≤768px  : html 87.5% → 1rem = 14px → b1 = 14px
-=========================== */
+/* =============================================
+   common.css
+   Font Style Guide 기준
+   ============================================= */
 
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 
-/* ---------------------------
-   0. HTML Base Font Size
---------------------------- */
+/* =============================================
+   CSS Variables
+   ============================================= */
+:root {
+  /* Colors */
+  --color-primary: #A2D3F1;
+  --color-secondary: #A63B03;
+  --color-text: #232323;
+  --color-white: #ffffff;
+
+  /* Font Family */
+  --font-display: 'Amiri Quran', serif;       /* H1 전용 */
+  --font-base: 'Noto Sans KR', sans-serif;    /* 기본 */
+}
+
+/* =============================================
+   Reset & Base
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
-  font-size: 100%;           /* PC : 16px */
-  scroll-behavior: smooth;
+  font-size: 16px;
   -webkit-text-size-adjust: 100%;
 }
 
-@media (max-width: 1024px) {
-  html { font-size: 87.5%; } /* Tablet : 14px */
-}
-
-@media (max-width: 768px) {
-  html { font-size: 87.5%; } /* Mobile : 14px */
-}
-
-
-/* ---------------------------
-   1. Design Tokens — PC 기준
-   ■ font-size : rem (기준 16px)
-   ■ spacing   : rem (4배수)
-   ■ radius    : rem
-   ■ border·shadow·line-height : px 또는 unitless 고정
---------------------------- */
-:root {
-
-  /* ── Colors ── */
-  --primary:         #AEDAFF;
-  --primary-light:   #D6EEFF;
-  --primary-dark:    #7DC4FF;
-  --secondary:       #AE6D59;
-  --secondary-light: #C98A77;
-  --secondary-dark:  #8A5244;
-
-  --text:       #232323;
-  --text-sub:   #555555;
-  --text-muted: #888888;
-  --text-white: #FFFFFF;
-
-  --bg-white: #FFFFFF;
-  --bg-light: #F8F8F8;
-  --bg-dark:  #1A1A1A;
-
-  /* ── Font Family ── */
-  --ff-ko: 'Noto Sans KR', sans-serif;
-  --ff-en: 'Amiri Quran', serif;
-
-  /* ── Font Weight ── */
-  --fw-regular: 400;
-  --fw-medium:  500;
-  --fw-bold:    700;
-
-  /* ── Font Size · PC (기준 16px)
-     h1    48px = 3rem
-     h2    40px = 2.5rem
-     h3    32px = 2rem
-     h4    24px = 1.5rem
-     b1    16px = 1rem
-     b2    14px = 0.875rem
-     badge 12px = 0.75rem
-  ── */
-  --fs-h1:    3rem;       /* 48px */
-  --fs-h2:    2.5rem;     /* 40px */
-  --fs-h3:    2rem;       /* 32px */
-  --fs-h4:    1.5rem;     /* 24px */
-  --fs-b1:    1rem;       /* 16px */
-  --fs-b2:    0.875rem;   /* 14px */
-  --fs-badge: 0.75rem;    /* 12px */
-
-
-  /* ── Grid ── */
-  --inner:  82.5rem;  /* 1320px */
-  --gutter: 1.5rem;   /*   24px */
-  --cols:   12;
-}
-
-
-/* ---------------------------
-   2. Tablet Tokens ≤1024px
-   html = 87.5% → 1rem = 14px
-   목표 px ÷ 14 = rem 값
-   ──────────────────────────
-   h1    40px ÷ 14 ≈ 2.857rem
-   h2    32px ÷ 14 ≈ 2.286rem
-   h3    24px ÷ 14 ≈ 1.714rem
-   h4    20px ÷ 14 ≈ 1.429rem
-   b1    14px ÷ 14 = 1rem      ← 기준
-   b2    13px ÷ 14 ≈ 0.929rem
-   badge 12px ÷ 14 ≈ 0.857rem
-   ──────────────────────────
-   xl    32px ÷ 14 ≈ 2.286rem
-   2xl   48px ÷ 14 ≈ 3.429rem
-   3xl   72px ÷ 14 ≈ 5.143rem
-   4xl   96px ÷ 14 ≈ 6.857rem
---------------------------- */
-@media (max-width: 1024px) {
-  :root {
-    --fs-h1:    2.857rem;
-    --fs-h2:    2.286rem;
-    --fs-h3:    1.714rem;
-    --fs-h4:    1.429rem;
-    --fs-b1:    1rem;
-    --fs-b2:    0.929rem;
-    --fs-badge: 0.857rem;
-
-    --sp-xl:  2.286rem;
-    --sp-2xl: 3.429rem;
-    --sp-3xl: 5.143rem;
-    --sp-4xl: 6.857rem;
-
-    --gutter: 1.5rem;
-    --inner:  100%;
-  }
-}
-
-
-/* ---------------------------
-   3. Mobile Tokens ≤768px
-   html = 87.5% → 1rem = 14px
-   목표 px ÷ 14 = rem 값
-   ──────────────────────────
-   h1    36px ÷ 14 ≈ 2.571rem
-   h2    28px ÷ 14 = 2rem
-   h3    20px ÷ 14 ≈ 1.429rem
-   h4    16px ÷ 14 ≈ 1.143rem
-   b1    14px ÷ 14 = 1rem      ← 기준
-   b2    12px ÷ 14 ≈ 0.857rem
-   badge 12px ÷ 14 ≈ 0.857rem
-   ──────────────────────────
-   xl    24px ÷ 14 ≈ 1.714rem
-   2xl   40px ÷ 14 ≈ 2.857rem
-   3xl   56px ÷ 14 = 4rem
-   4xl   72px ÷ 14 ≈ 5.143rem
---------------------------- */
-@media (max-width: 768px) {
-  :root {
-    --fs-h1:    2.571rem;
-    --fs-h2:    2rem;
-    --fs-h3:    1.429rem;
-    --fs-h4:    1.143rem;
-    --fs-b1:    1rem;
-    --fs-b2:    0.857rem;
-    --fs-badge: 0.857rem;
-
-    --sp-xl:  1.714rem;
-    --sp-2xl: 2.857rem;
-    --sp-3xl: 4rem;
-    --sp-4xl: 5.143rem;
-
-    --gutter: 1rem;
-    --inner:  100%;
-  }
-}
-
-
-/* ---------------------------
-   4. Typography
---------------------------- */
 body {
-  font-family: var(--ff-ko);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-b1);
-  color: var(--text);
-  background-color: var(--bg-white);
-  line-height: 1.5;
+  font-family: var(--font-base);
+  font-size: 18px;          /* b9 기준 최소 사이즈 */
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.6;
+  word-break: keep-all;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-.en { font-family: var(--ff-en); }
+/* =============================================
+   Headings  H1 ~ H4
+   ============================================= */
 
-.h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); line-height: 1.2; }
-.h2 { font-size: var(--fs-h2); font-weight: var(--fw-bold); line-height: 1.25; }
-.h3 { font-size: var(--fs-h3); font-weight: var(--fw-bold); line-height: 1.3; }
-.h4 { font-size: var(--fs-h4); font-weight: var(--fw-bold); line-height: 1.35; }
-
-.b1 { font-size: var(--fs-b1); font-weight: var(--fw-regular); line-height: 1.6; }
-.b2 { font-size: var(--fs-b2); font-weight: var(--fw-regular); line-height: 1.6; }
-.b3 { font-size: var(--fs-badge); font-weight: var(--fw-regular); line-height: 1.5; }
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: var(--fs-badge);
-  font-weight: var(--fw-bold);
-  padding: var(--sp-xs) var(--sp-md);
-  border-radius: var(--r-full);
-  background-color: var(--primary);
-  color: var(--text);
-  letter-spacing: 0.04em;
-}
-.badge--secondary {
-  background-color: var(--secondary);
-  color: var(--text-white);
+/* H1 — Amiri Quran / Regular / 100px */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: 100px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-text);
 }
 
-.text-primary   { color: var(--primary); }
-.text-secondary { color: var(--secondary); }
-.text-white     { color: var(--text-white); }
-.text-sub       { color: var(--text-sub); }
-.text-muted     { color: var(--text-muted); }
+/* H2 — Noto Sans KR / Bold / 60px */
+h2, .h2 {
+  font-family: var(--font-base);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
 
-@media (max-width: 768px) {
-  .text-mo-center { text-align: center; }
-  .text-mo-left   { text-align: left; }
+/* H3 — Noto Sans KR / Bold / 50px */
+h3, .h3 {
+  font-family: var(--font-base);
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* H4 — Noto Sans KR / Bold / 40px */
+h4, .h4 {
+  font-family: var(--font-base);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+/* =============================================
+   Body Text  b1 ~ b9
+   ============================================= */
+
+/* b1 — Noto Sans KR / Bold / 35px */
+.b1 {
+  font-family: var(--font-base);
+  font-size: 35px;
+  font-weight: 700;
+}
+
+/* b2 — Noto Sans KR / Regular / 40px */
+.b2 {
+  font-family: var(--font-base);
+  font-size: 40px;
+  font-weight: 400;
+}
+
+/* b3 — Noto Sans KR / Bold / 30px */
+.b3 {
+  font-family: var(--font-base);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* b4 — Noto Sans KR / Bold / 25px */
+.b4 {
+  font-family: var(--font-base);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* b5 — Noto Sans KR / Regular / 30px */
+.b5 {
+  font-family: var(--font-base);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* b6 — Noto Sans KR / Regular / 25px */
+.b6 {
+  font-family: var(--font-base);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+/* b7 — Noto Sans KR / SemiBold / 22px */
+.b7 {
+  font-family: var(--font-base);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* b8 — Noto Sans KR / Regular / 22px */
+.b8 {
+  font-family: var(--font-base);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+/* b9 — Noto Sans KR / Regular / 18px */
+.b9 {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* =============================================
+   Utility
+   ============================================= */
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
 }
 
 
-/* ---------------------------
-   5. Layout
---------------------------- */
 .inner {
   width: 100%;
   max-width: var(--inner);
@@ -226,20 +177,6 @@ body {
   padding: 0 var(--gutter);
 }
 
-
-/* ---------------------------
-   6. Flex Utilities
---------------------------- */
-.flex         { display: flex; }
-.flex-col     { flex-direction: column; }
-.flex-wrap    { flex-wrap: wrap; }
-.items-start  { align-items: flex-start; }
-.items-center { align-items: center; }
-.items-end    { align-items: flex-end; }
-.justify-start   { justify-content: flex-start; }
-.justify-center  { justify-content: center; }
-.justify-end     { justify-content: flex-end; }
-.justify-between { justify-content: space-between; }
 
 /* ---------------------------
    7. Grid Utilities
@@ -251,57 +188,6 @@ body {
 .col-5  { grid-template-columns: repeat(5, 1fr); }
 .col-12 { grid-template-columns: repeat(12, 1fr); }
 
-@media (max-width: 1024px) {
-  .tab-col-2 { grid-template-columns: repeat(2, 1fr); }
-  .tab-col-3 { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .mo-col-1 { grid-template-columns: repeat(1, 1fr); }
-  .mo-col-2 { grid-template-columns: repeat(2, 1fr); }
-}
-
-
-/* ---------------------------
-   9. Buttons
-   padding : rem / border : px 고정
---------------------------- */
-
-.link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-xs);
-  font-size: var(--fs-b2);
-  font-weight: var(--fw-bold);
-  color: var(--text);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-  transition: var(--tr-base);
-}
-.link:hover  { color: var(--secondary); }
-.link--white { color: var(--text-white); }
-
-
-
-/* .card__img   { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
-
-.card__body  { padding: var(--sp-md) var(--sp-lg); }
-
-.card__label {
-  font-size: var(--fs-badge);
-  font-weight: var(--fw-bold);
-  color: var(--text-sub);
-  margin-bottom: var(--sp-xs);
-}
-
-.card__title {
-  font-size: var(--fs-b1);
-  font-weight: var(--fw-bold);
-  color: var(--text);
-} */
-
-
-/* ---------------------------
 
 /* ---------------------------
    14. Image Utilities
@@ -314,8 +200,3 @@ body {
 .ratio-4x3  { aspect-ratio: 4 / 3; }
 .ratio-16x9 { aspect-ratio: 16 / 9; }
 .ratio-3x4  { aspect-ratio: 3 / 4; }
-
-
-/* ---------------------------
-
-/* ---------------------------
