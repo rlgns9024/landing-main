@@ -125,6 +125,7 @@ em {
 .title-2 span {
     font-weight: 700;
 }
+
 /* about css 마감 */
 
 
@@ -150,9 +151,10 @@ em {
     gap: 1.25rem;
 }
 
-.lipo-title{
+.lipo-title {
     font-weight: 700;
 }
+
 .title-2 p {
     font-size: 1.875rem;
 }
@@ -160,6 +162,7 @@ em {
 .title-2 span {
     font-size: 1.562rem;
 }
+
 /* section3  마감 */
 
 /* 장비 시스템 섹션 시작 */
@@ -287,6 +290,7 @@ em {
 .equipment-link-next:hover {
     text-decoration: underline;
 }
+
 /* 장비 시스템 섹션 마감 */
 
 /* section 4 시작 */
@@ -302,7 +306,8 @@ em {
 
     /* 768px 폰트 규격 (px -> rem, base 16px) */
     .equipment-heading .b7 {
-        font-size: 1.875rem; /* 30px */
+        font-size: 1.875rem;
+        /* 30px */
         line-height: 1.2;
     }
 
@@ -339,7 +344,8 @@ em {
 
     .equipment-circle--pink {
         margin-top: 0;
-        margin-left: -3.25rem; /* 겹침 */
+        margin-left: -3.25rem;
+        /* 겹침 */
     }
 
     .equipment-circle-x {
@@ -347,12 +353,14 @@ em {
     }
 
     .equipment-circle .b7 {
-        font-size: 1.5625rem; /* 25px */
+        font-size: 1.5625rem;
+        /* 25px */
         line-height: 1.2;
     }
 
     .equipment-link-next {
-        font-size: 1.5625rem; /* 25px */
+        font-size: 1.5625rem;
+        /* 25px */
         line-height: 1.2;
     }
 
@@ -367,16 +375,14 @@ em {
 
     /* 모바일 서브텍스트: 18px, 2줄로 보이게 */
     .equipment-text .b8 {
-        font-size: 1.125rem; /* 18px */
+        font-size: 1.125rem;
+        /* 18px */
     }
 
     .equipment-br--desktop {
         display: none;
     }
 }
-
-
-
 
 
 
@@ -432,20 +438,23 @@ em {
     .kv-title {
         font-size: 3rem;
         text-align: center;
-        padding: 1.25rem 0; /* 20px */
+        padding: 1.25rem 0;
+        /* 20px */
     }
 
     .kv-subtitle {
         font-size: 1.5rem;
         text-align: center;
-        padding: 1.25rem 0; /* 20px */
+        padding: 1.25rem 0;
+        /* 20px */
     }
 
     .btn {
         display: flex;
         justify-content: center;
         width: 100%;
-        padding: 1.25rem 0; /* 20px */
+        padding: 1.25rem 0;
+        /* 20px */
     }
 
     .btn1,
@@ -454,10 +463,10 @@ em {
         padding: 0.5rem 0.5rem;
     }
 
-    
-/* 반응형 kv 영역 마감 */
 
+    /* 반응형 kv 영역 마감 */
 
+    /* about 반응형 시작 */
     .about {
         flex-direction: column-reverse;
     }
@@ -473,19 +482,87 @@ em {
     .text-title .h2 {
         font-size: 1.5rem;
     }
+
     /* about 반응형 마감 */
 }
 
-
-
-
-
-
-
-
-/* about 반응형 시작 */
-@media(max-width:768px) {
-    
-
+/* section5 시작 */
+.section5 {
+    width: 1920px;
+    height: 900px;
+    background-image: url(../images/sec5-bg.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
 }
 
+/* 가운데 컨텐츠 */
+.section5-inner {
+    width: 1320px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+/* 전체 숫자 영역 */
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* 한 줄 */
+.row {
+    display: flex;
+    align-items: center;
+}
+
+/* 주황 텍스트 */
+.label {
+    width: 290px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #c26a4a;
+    margin: 0;
+}
+
+/* 숫자 + 묶음 */
+.value-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 숫자 */
+.num {
+    font-size: 80px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+}
+
+/* + */
+.plus {
+    font-size: 80px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+}
+
+/* 의사 이미지 */
+.doctor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.doctor img {
+    height: 100%;
+    width: auto;
+    display: block;
+}
+/* section5 마감 */
