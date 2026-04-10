@@ -293,107 +293,54 @@ em {
 
 /* 장비 시스템 섹션 마감 */
 
-/* section 4 시작 */
+/* 섹션 5 시작 */
 
-@media (max-width: 768px) {
-    .equipment-section {
-        padding: 4.5rem 1rem;
-    }
+.section5{
+    background-image: url(../images/sec5-bg.webp);
+    width: 100%;
+    height: 900px;
+    display: flex;
+}
+.doctor-img{
+    width: 923px;
+    height: 900px;
+    margin-left: auto;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    display: block;
+}
+.text-box{
+    display: flex;
+    align-items: center;
+    margin-left: 300px;
+}
+.left-text{
+    color: #A63B03;
+    padding-right: 290px;
 
-    .equipment-heading {
-        margin-bottom: 2.5rem;
-    }
+}
+.right-text{
+    color: #fff;
+    font-size: 80px;
 
-    /* 768px 폰트 규격 (px -> rem, base 16px) */
-    .equipment-heading .b7 {
-        font-size: 1.875rem;
-        /* 30px */
-        line-height: 1.2;
-    }
+}
+.center-text{
+    color: #fff;
+    font-size: 80px;
+    margin-right: 20px;
 
-    .equipment-item.is-active {
-        grid-template-columns: 1fr;
-        column-gap: 0;
-        row-gap: 20px;
-    }
-
-    .equipment-image,
-    .equipment-middle,
-    .equipment-content {
-        grid-column: 1 / -1;
-    }
-
-    .equipment-image {
-        justify-content: center;
-    }
-
-    .equipment-middle {
-        /* 모바일에서는 원형 가로 배치 */
-        max-width: none;
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .equipment-circle {
-        width: 11.5rem;
-        height: 11.5rem;
-    }
-
-    .equipment-circle--pink {
-        margin-top: 0;
-        margin-left: -3.25rem;
-        /* 겹침 */
-    }
-
-    .equipment-circle-x {
-        margin: 0 -0.75rem;
-    }
-
-    .equipment-circle .b7 {
-        font-size: 1.5625rem;
-        /* 25px */
-        line-height: 1.2;
-    }
-
-    .equipment-link-next {
-        font-size: 1.5625rem;
-        /* 25px */
-        line-height: 1.2;
-    }
-
-    .equipment-content {
-        padding-left: 0;
-        padding-top: 0.5rem;
-    }
-
-    .equipment-text .h3 {
-        font-size: 2rem;
-    }
-
-    /* 모바일 서브텍스트: 18px, 2줄로 보이게 */
-    .equipment-text .b8 {
-        font-size: 1.125rem;
-        /* 18px */
-    }
-
-    .equipment-br--desktop {
-        display: none;
-    }
+}
+.text-wrap{
+    margin-top: 218px;
+    
 }
 
 
 
-
-
-
-
-
-
-
 @media(max-width: 768px) {
+        html {
+        font-size: 14px;
+    }
 
     /* 모바일 kv 영역 시작 */
     .header {
@@ -484,299 +431,4 @@ em {
     }
 
     /* about 반응형 마감 */
-}
-
-/* section5 시작 */
-.section5 {
-    width: 1920px;
-    height: 900px;
-    background-image: url(../images/sec5-bg.webp);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-}
-
-/* 가운데 컨텐츠 */
-.section5-inner {
-    width: 82.5rem; /* 1320px */
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-/* 전체 숫자 영역 */
-.stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem; /* 40px */
-}
-
-/* 한 줄 */
-.row {
-    display: flex;
-    align-items: center;
-}
-
-/* 주황 텍스트 */
-.label {
-    width: 18.125rem; /* 290px */
-    font-size: 1.375rem; /* 22px */
-    font-weight: 400;
-    color: #c26a4a;
-    margin: 0;
-}
-
-/* 숫자 + 묶음 */
-.value-box {
-    display: flex;
-    align-items: baseline;
-    gap: 1.25rem; /* 20px */
-}
-
-/* 숫자 */
-.num {
-    font-size: 5rem; /* 80px */
-    font-weight: 400;
-    color: #fff;
-    line-height: 1;
-}
-
-/* + */
-.plus {
-    font-size: 5rem; /* 80px */
-    font-weight: 400;
-    color: #fff;
-    line-height: 1;
-    transform: translateY(-0.02em);
-}
-
-/* 의사 이미지 */
-.doctor {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 45%;
-    z-index: 1;
-}
-
-.doctor img {
-    height: 100%;
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: right center;
-}
-/* section5 마감 */
-
-/* =========================
-   Before & After (section6)
-   ========================= */
-.before-after-section {
-    padding: 7.5rem 0;
-    background: #fff;
-}
-
-.before-after-heading {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.before-after-heading .b8 {
-    margin-top: 0.75rem;
-    color: rgba(35, 35, 35, 0.75);
-}
-
-.before-after-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-    align-items: start;
-}
-
-.before-after-card {
-    border-radius: 1.25rem;
-    overflow: hidden;
-    background: #f6f7f9;
-}
-
-.before-after-media {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    background-size: cover;
-    background-position: center;
-}
-
-.before-after-media--before {
-    background-image: linear-gradient(135deg, rgba(162, 211, 241, 0.45), rgba(0, 0, 0, 0.05));
-}
-
-.before-after-media--after {
-    background-image: linear-gradient(135deg, rgba(255, 186, 186, 0.5), rgba(0, 0, 0, 0.05));
-}
-
-.before-after-card figcaption {
-    padding: 0.85rem 1rem;
-    color: rgba(35, 35, 35, 0.8);
-}
-
-@media (max-width: 768px) {
-    .before-after-section {
-        padding: 4.5rem 0;
-    }
-
-    .before-after-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =========================
-   Clinic intro (section7)
-   ========================= */
-.clinic-section {
-    padding: 7.5rem 0;
-    background: #0b0f16;
-    color: #fff;
-}
-
-.clinic-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-.clinic-text .h4 {
-    color: #fff;
-}
-
-.clinic-text .b8 {
-    margin-top: 1.25rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.9;
-}
-
-.clinic-points {
-    margin-top: 1.25rem;
-    display: grid;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.clinic-panel {
-    border-radius: 1.25rem;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.clinic-panel__media {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background-image: radial-gradient(circle at 20% 10%, rgba(162, 211, 241, 0.55), transparent 55%),
-        radial-gradient(circle at 70% 80%, rgba(255, 186, 186, 0.4), transparent 55%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-}
-
-.clinic-panel__info {
-    padding: 1.25rem 1.25rem 1.35rem;
-    display: grid;
-    gap: 0.85rem;
-}
-
-.clinic-info-row {
-    display: grid;
-    grid-template-columns: 4.25rem 1fr;
-    gap: 0.75rem;
-    align-items: baseline;
-}
-
-.clinic-info-label {
-    color: rgba(162, 211, 241, 0.95);
-    font-weight: 600;
-}
-
-@media (max-width: 768px) {
-    .clinic-section {
-        padding: 4.5rem 0;
-    }
-
-    .clinic-inner {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ===== Responsive: mobile base font 14px ===== */
-@media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
-
-    /* section3: 2칸, 2칸, 마지막 1칸은 풀 */
-    .lipo-area {
-        padding: 0 1rem;
-    }
-
-    .lipo-list {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-    }
-
-    .lipo-list .card-item:last-child {
-        grid-column: 1 / -1;
-    }
-
-    /* section5: 모바일 레이아웃 */
-    .section5 {
-        width: 100%;
-        height: auto;
-        min-height: 40rem;
-    }
-
-    .section5-inner {
-        width: 100%;
-        padding: 4.5rem 1.25rem 6rem;
-        align-items: flex-start;
-        z-index: 2;
-    }
-
-    .stats {
-        gap: 1.5rem;
-    }
-
-    .row {
-        align-items: baseline;
-    }
-
-    .label {
-        width: 10.5rem;
-        font-size: 1rem;
-    }
-
-    .num,
-    .plus {
-        font-size: 3.2rem;
-    }
-
-    .value-box {
-        gap: 0.75rem;
-    }
-
-    .doctor {
-        width: 100%;
-        opacity: 0.85;
-    }
-
-    .doctor img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: right center;
-    }
 }
