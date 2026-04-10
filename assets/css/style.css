@@ -574,6 +574,143 @@ em {
 }
 /* section5 마감 */
 
+/* =========================
+   Before & After (section6)
+   ========================= */
+.before-after-section {
+    padding: 7.5rem 0;
+    background: #fff;
+}
+
+.before-after-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.before-after-heading .b8 {
+    margin-top: 0.75rem;
+    color: rgba(35, 35, 35, 0.75);
+}
+
+.before-after-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.before-after-card {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: #f6f7f9;
+}
+
+.before-after-media {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background-size: cover;
+    background-position: center;
+}
+
+.before-after-media--before {
+    background-image: linear-gradient(135deg, rgba(162, 211, 241, 0.45), rgba(0, 0, 0, 0.05));
+}
+
+.before-after-media--after {
+    background-image: linear-gradient(135deg, rgba(255, 186, 186, 0.5), rgba(0, 0, 0, 0.05));
+}
+
+.before-after-card figcaption {
+    padding: 0.85rem 1rem;
+    color: rgba(35, 35, 35, 0.8);
+}
+
+@media (max-width: 768px) {
+    .before-after-section {
+        padding: 4.5rem 0;
+    }
+
+    .before-after-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================
+   Clinic intro (section7)
+   ========================= */
+.clinic-section {
+    padding: 7.5rem 0;
+    background: #0b0f16;
+    color: #fff;
+}
+
+.clinic-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.clinic-text .h4 {
+    color: #fff;
+}
+
+.clinic-text .b8 {
+    margin-top: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.9;
+}
+
+.clinic-points {
+    margin-top: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.clinic-panel {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.clinic-panel__media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-image: radial-gradient(circle at 20% 10%, rgba(162, 211, 241, 0.55), transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(255, 186, 186, 0.4), transparent 55%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.clinic-panel__info {
+    padding: 1.25rem 1.25rem 1.35rem;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.clinic-info-row {
+    display: grid;
+    grid-template-columns: 4.25rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+}
+
+.clinic-info-label {
+    color: rgba(162, 211, 241, 0.95);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .clinic-section {
+        padding: 4.5rem 0;
+    }
+
+    .clinic-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===== Responsive: mobile base font 14px ===== */
 @media (max-width: 768px) {
     html {
