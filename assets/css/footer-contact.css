@@ -1,0 +1,213 @@
+/**
+ * 푸터 및 컨택트 섹션
+ * 배경: linear-gradient(#3680AC → #4F3C81), 텍스트 #fff
+ */
+
+.site-footer-contact {
+    margin: 0;
+    box-sizing: border-box;
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 4vw, 2.75rem);
+    color: #ffffff;
+    /* [배경 그라데이션 수정] 시작·끝 색 또는 각도(90deg 등)만 바꾸면 됨 */
+    background: linear-gradient(90deg, #3680ac 0%, #4f3c81 100%);
+}
+
+.site-footer-contact-inner {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ----- 상단 안내 문구: 18px / regular / 중앙 ----- */
+.site-footer-lead {
+    margin: 0 0 50px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #ffffff;
+    word-break: keep-all;
+}
+
+.site-footer-lead-line {
+    display: block;
+    margin: 0;
+}
+
+.site-footer-lead-line + .site-footer-lead-line {
+    margin-top: 0.25em;
+}
+
+/* ----- 중단: 컨택트 박스 + 대표전화 (PC 가로) ----- */
+.site-footer-mid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-bottom: 50px;
+}
+
+/* [컨택트 박스] 428×100, 흰 테두리 1px, radius 5px, 배경 투명 */
+.site-footer-contact-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 428px;
+    max-width: 100%;
+    height: 100px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: transparent;
+    gap: 20px;
+    padding: 0 12px;
+}
+
+/* 카톡 / 네이버 각 절반 */
+.site-footer-contact-half {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #ffffff;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.site-footer-contact-half:hover,
+.site-footer-contact-half:focus-visible {
+    text-decoration: underline;
+    outline: none;
+}
+
+.site-footer-contact-half:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.site-footer-contact-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+/* [세로 구분선] 높이 80px, 흰색 1px */
+.site-footer-contact-divider {
+    display: block;
+    flex-shrink: 0;
+    width: 1px;
+    height: 80px;
+    background-color: #ffffff;
+    margin: 0;
+    border: none;
+    padding: 0;
+    align-self: center;
+}
+
+/* ----- 대표전화: 나비 아이콘 + 30px ----- */
+.site-footer-phone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #ffffff;
+    word-break: keep-all;
+}
+
+.site-footer-phone-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: auto;
+    display: block;
+}
+
+.site-footer-phone-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-footer-phone-link:hover,
+.site-footer-phone-link:focus-visible {
+    text-decoration: underline;
+}
+
+.site-footer-phone-link:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* ----- 하단 기업 정보: 16px / 중앙 ----- */
+.site-footer-meta {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    word-break: keep-all;
+}
+
+.site-footer-meta-line {
+    display: block;
+    margin: 0;
+}
+
+.site-footer-meta-line + .site-footer-meta-line {
+    margin-top: 0.35em;
+}
+
+/* ----- 모바일: 컨택트 박스와 전화만 세로(Column), 박스는 width 90% + max-width 428px ----- */
+@media (max-width: 768px) {
+    .site-footer-mid {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: clamp(36px, 8vw, 50px);
+    }
+
+    .site-footer-contact-box {
+        width: 90%;
+        max-width: 428px;
+        padding: 0 8px;
+    }
+
+    .site-footer-contact-half {
+        font-size: clamp(17px, 4.2vw, 22px);
+        gap: 8px;
+    }
+
+    .site-footer-contact-icon {
+        width: clamp(28px, 8vw, 36px);
+        height: clamp(28px, 8vw, 36px);
+    }
+
+    .site-footer-phone {
+        font-size: clamp(22px, 5vw, 30px);
+        flex-wrap: wrap;
+    }
+
+    .site-footer-lead {
+        font-size: clamp(15px, 3.5vw, 18px);
+        margin-bottom: clamp(36px, 8vw, 50px);
+    }
+
+    .site-footer-meta {
+        font-size: clamp(14px, 3.2vw, 16px);
+    }
+}

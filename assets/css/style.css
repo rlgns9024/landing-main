@@ -7,11 +7,14 @@ body {
 /* 헤더 영역 및 네비영역 */
 .header {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     background-image: url(../images/kv-img.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    /* KV 섹션만 가로 넘침 차단 (다른 섹션에 영향 없음) */
+    overflow-x: hidden;
 }
 
 .header-inner {
@@ -19,14 +22,20 @@ body {
     max-width: 1320px;
     margin: 0 auto;
     padding: 1.5rem 1.2rem 0;
+    padding-left: max(1.2rem, env(safe-area-inset-left));
+    padding-right: max(1.2rem, env(safe-area-inset-right));
     box-sizing: border-box;
+    min-height: inherit;
 }
 
 .nav {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
     color: #fff;
-    gap: 1.75rem;
+    gap: clamp(0.75rem, 1.2vw, 1.75rem);
+    row-gap: 0.5rem;
 }
 
 .menu-btn {
@@ -35,27 +44,34 @@ body {
     background: transparent;
     padding: 0;
     cursor: pointer;
+    /* 터치 영역 확보 — 모바일 미디어쿼리에서 flex로 전환 */
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-btn img {
     display: block;
     width: 1.6rem;
     height: 1.6rem;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .main-title {
-    padding-top: 4.5rem;
+    padding-top: clamp(2rem, 4vw, 4.5rem);
     text-align: right;
 }
 
 .title {
     text-align: right;
-    padding: 2.5rem 0;
+    padding: clamp(1rem, 2.5vw, 2.5rem) 0;
 }
 
 .kv-title {
     color: #A2D3F1;
-    padding: 2.5rem 0;
+    padding: clamp(1rem, 2vw, 2.5rem) 0;
 }
 
 .kv-subtitle {
@@ -64,21 +80,61 @@ body {
 
 .btn {
     text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: clamp(0.5rem, 1.2vw, 1rem);
 }
 
 .btn1 {
     background: #AEDAFF;
-    padding: 1.5rem 1.5rem;
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
     border-radius: 49.95rem;
-    font-size: 2.5rem;
+    font-size: clamp(1.125rem, 0.6rem + 2vw, 2.5rem);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1.25;
+    max-width: 100%;
 }
 
 .btn2 {
     background:
         #AE6D59;
-    padding: 1.5rem 1.5rem;
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
     border-radius: 49.95rem;
-    font-size: 2.5rem;
+    font-size: clamp(1.125rem, 0.6rem + 2vw, 2.5rem);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1.25;
+    max-width: 100%;
+}
+
+/*
+ * 769px 이상: PC 레이아웃(우측 정렬 네비·타이틀·버튼) 유지, 글자 크기만 뷰포트에 따라 점진 축소
+ * (common.css h1/h2 고정 px보다 구체적으로 덮어씀)
+ */
+@media (min-width: 769px) {
+    /* 한 줄 네비 유지(좁은 노트북에서 링크만 두 줄로 깨지는 현상 방지) */
+    .nav {
+        flex-wrap: nowrap;
+    }
+
+    .nav a {
+        font-size: clamp(0.9375rem, 0.55rem + 0.85vw, 1.125rem);
+        white-space: nowrap;
+    }
+
+    .kv-title {
+        font-size: clamp(3.25rem, 1.25rem + 4.25vw, 6.25rem);
+        line-height: 1.08;
+    }
+
+    .kv-subtitle.h2 {
+        font-size: clamp(1.5rem, 0.5rem + 3vw, 3.75rem);
+        line-height: 1.2;
+    }
 }
 
 /* pc hero마감 */
@@ -135,7 +191,7 @@ em {
 .title-2 {
     text-align: center;
     margin-top: 6.875rem;
-    padding-bottom: 5rem;
+    padding-bottom: 110px;
 }
 
 .lipo-area {
@@ -163,11 +219,56 @@ em {
     font-size: 1.562rem;
 }
 
+/* section3: 769px 이상 PC — 3열 그리드, 마지막 행 2장은 가운데 정렬(빈 가운데 열) */
+@media (min-width: 769px) {
+    .lipo-area {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        box-sizing: border-box;
+    }
+
+    .lipo-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1rem, 1.5vw, 1.25rem);
+        align-items: start;
+    }
+
+    .card-item {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .title-2 p {
+        font-size: clamp(1.25rem, 1rem + 1.5vw, 1.875rem);
+    }
+
+    .title-2 span {
+        font-size: clamp(1.05rem, 0.85rem + 1vw, 1.562rem);
+    }
+
+    /* 하단 2장(4·5번)은 3열 중 양 끝 열에 두어 시안처럼 가운데로 모인 배치 */
+    .lipo-list .card-item:nth-child(4) {
+        grid-column: 1 / 2;
+    }
+
+    .lipo-list .card-item:nth-child(5) {
+        grid-column: 3 / 4;
+    }
+}
+
 /* section3  마감 */
 
 /* 장비 시스템 섹션 시작 */
 .equipment-section {
-    padding: 7.5rem 1.25rem;
+    padding: 110px 1.25rem;
     background-color: #fff;
 }
 
@@ -295,69 +396,903 @@ em {
 
 /* 섹션 5 시작 */
 
-.section5{
+/*
+ * 섹션5 의사 프레임: 시안 비율 고정 → 안에 이미지는 contain만 (원본 잘림 없음)
+ * PC 923×900, 모바일 230×514 (뷰포트 좁으면 폭만 축소·세로는 비율 유지)
+ */
+.section5 {
+    --section5-doctor-w: min(923px, max(220px, calc(100vw - 30rem)));
+    --section5-doctor-h: calc(var(--section5-doctor-w) * 900 / 923);
+    position: relative;
     background-image: url(../images/sec5-bg.webp);
-    width: 100%;
-    height: 900px;
-    display: flex;
-}
-.doctor-img{
-    width: 923px;
-    height: 900px;
-    margin-left: auto;
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+    width: 100%;
+    min-height: max(36rem, var(--section5-doctor-h));
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.text-wrap {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    padding-top: 110px;
+    padding-bottom: 110px;
+    padding-left: clamp(2rem, 5vw, 12rem);
+    padding-right: calc(var(--section5-doctor-w) + clamp(1rem, 2.5vw, 2.5rem));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: clamp(1.25rem, 2.5vw, 2.25rem);
+    box-sizing: border-box;
+    overflow-x: visible;
+    overflow-wrap: break-word;
+}
+
+/*
+ * 통계 한 줄: 라벨 | 숫자(우측 정렬) | 고정폭 '+' 열 → 모든 행에서 '+' 세로 일치
+ */
+.text-box {
+    display: grid;
+    grid-template-columns: minmax(0, max-content) minmax(6.5ch, 1fr) 2.75ch;
+    column-gap: clamp(0.5rem, 1.5vw, 1.25rem);
+    align-items: baseline;
+    width: 100%;
+    max-width: 36rem;
+}
+
+.left-text {
+    color: #A63B03;
+    padding-right: 0;
+    justify-self: start;
+    text-align: left;
+}
+
+.left-text p {
+    font-size: clamp(0.875rem, 1.1vw + 0.55rem, 1.375rem);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.center-text {
+    color: #fff;
+    justify-self: end;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    margin-right: 0;
+}
+
+.center-text p {
+    font-size: clamp(2rem, 3vw + 1.25rem, 5rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.right-text {
+    color: #fff;
+    justify-self: center;
+    text-align: center;
+    width: 2.75ch;
+    min-width: 2.75ch;
+}
+
+.right-text p {
+    font-size: clamp(2rem, 3vw + 1.25rem, 5rem);
+    line-height: 1;
+    font-weight: 400;
+}
+
+.section5-desc {
+    max-width: 36rem;
+    margin-bottom: clamp(0.35rem, 1.2vw, 0.75rem);
+}
+
+.section5-desc p {
+    color: #fff;
+    font-size: clamp(0.875rem, 1vw + 0.55rem, 1.25rem);
+    line-height: 1.65;
+    font-weight: 400;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.section5-desc strong {
+    font-weight: 700;
+}
+
+.section5-sign {
+    position: relative;
+    z-index: 1;
+    max-width: 36rem;
+    margin-top: clamp(0.5rem, 1.5vw, 1.25rem);
+    padding-top: 0;
+    padding-bottom: clamp(0.25rem, 1vw, 0.5rem);
+    overflow: visible;
+}
+
+/* absolute 제거: 본문과 겹치지 않게 흐름으로 배치, 직함은 그 위 레이어 */
+.section5-sign-script {
+    position: relative;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 clamp(-0.15em, -0.5vw, 0) 0;
+    font-family: "Brush Script MT", "Segoe Script", "Apple Chancery", cursive;
+    font-size: clamp(1.75rem, 4vw + 0.75rem, 4rem);
+    color: rgba(255, 255, 255, 0.28);
+    line-height: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+}
+
+.section5-sign-title {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(-0.85rem, -2vw, -0.35rem);
+    color: #fff;
+    font-size: clamp(1rem, 1.1vw + 0.55rem, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+}
+
+.section5-sign-title strong {
+    font-weight: 700;
+}
+
+.doctor-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--section5-doctor-w);
+    height: var(--section5-doctor-h);
+    z-index: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.doctor-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: right top;
+    align-self: flex-start;
+}
+
+/*
+ * BEFORE & AFTER
+ * - 케이스마다 .ba-page = 한 뷰포트(스크롤 한 칸)
+ * - PC 시안: 각 썸 650×685, Before–After 간격 5px (피그마)
+ */
+.ba-page {
+    background-color: #fff;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 시안: 섹션 상·하 여백 110px (다른 블록과 동일) */
+    padding: 110px clamp(0.75rem, 3vw, 1.25rem);
+    box-sizing: border-box;
+}
+
+.ba-page-inner {
+    width: 100%;
+    max-width: calc(650px + 650px + 5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vh, 1.5rem);
+    box-sizing: border-box;
+}
+
+.ba-heading {
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 2vw + 0.75rem, 2.5rem);
+    color: #232323;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.ba-pair {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.ba-cell {
+    position: relative;
+    flex: 0 1 auto;
+    min-width: 0;
+    width: min(650px, calc((100% - 5px) / 2));
+    aspect-ratio: 650 / 685;
+    max-width: 650px;
+    overflow: hidden;
+    background-color: #ececec;
+}
+
+.ba-cell img {
+    width: 100%;
+    height: 100%;
+    display: block;
     object-fit: cover;
+    object-position: center;
+}
+
+.ba-label {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.4rem 0.9rem;
+    font-size: clamp(0.625rem, 1.1vw + 0.35rem, 0.8125rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.ba-label--before {
+    background-color: #A2D3F1;
+}
+
+.ba-label--after {
+    background-color: #232323;
+}
+
+/* PC: 피그마 650×685 비율, 간격 5px — 가로가 부족할 때만 한 칸 너비 축소 */
+@media (min-width: 769px) {
+    .ba-cell {
+        width: min(650px, calc((100vw - 3rem - 5px) / 2));
+        height: auto;
+        aspect-ratio: 650 / 685;
+        max-width: 650px;
+    }
+}
+
+/*
+ * 768px 이하에서도 Before | After 가로 2열 유지(간격 5px), 셀 폭만 비율대로 축소
+ * → 기본 .ba-pair(row) + .ba-cell width: calc((100% - 5px) / 2) 그대로 사용
+ */
+
+/* ========== 고객 후기 (sec10) ==========
+ * PC: min-width 1025px — 12컬럼, 콜라주↔묶음 간격 45px = gap 24 + padding-left 21
+ * 모바일·태블릿: max-width 1024px — 세로 스택, 4칸 느낌의 좌우 패딩, 도트
+ */
+.stories-section {
+    display: block;
+    background-color: #faf6f4;
+    color: #232323;
+    box-sizing: border-box;
+    padding: 110px clamp(1rem, 2vw, 1.25rem);
+    overflow-x: hidden;
+}
+
+.stories-inner {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.stories-title {
+    margin: 0 0 3.75rem;
+    text-align: left;
+    font-size: 30px;
+    line-height: 1.35;
+    font-weight: 400;
+    color: #232323;
+}
+
+.stories-title__light {
+    font-weight: 400;
+}
+
+.stories-title__bold {
+    font-weight: 700;
+}
+
+.stories-body {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 슬라이드 트랙 */
+.stories-collage-viewport {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.stories-collage-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 300%;
+    transition: transform 0.45s ease;
+    will-change: transform;
+}
+
+.stories-collage-slide {
+    flex: 0 0 calc(100% / 3);
+    width: calc(100% / 3);
+    box-sizing: border-box;
+}
+
+/* 모바일 시안(2번): 왼쪽 큰 세로 + 오른쪽 2장(합쳐서 왼쪽과 동일 높이, 반씩 분할) */
+.stories-collage {
+    display: grid;
+    grid-template-columns: minmax(0, 2.05fr) minmax(0, 1fr);
+    column-gap: clamp(8px, 2vw, 14px);
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.stories-collage-main {
+    min-width: 0;
+    align-self: start;
+}
+
+.stories-collage-main img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.stories-collage-stack {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 2vw, 12px);
+    min-width: 0;
+    min-height: 100%;
+    height: 100%;
+    align-self: stretch;
+}
+
+.stories-stack-slot {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.stories-stack-slot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+}
+
+/* 이미지 미준비 시 빈 칸 */
+.stories-ph {
+    width: 100%;
+    background-color: #e8e4e0;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
+.stories-ph--main {
+    aspect-ratio: 4 / 5;
+    min-height: 6rem;
+}
+
+.stories-stack-slot .stories-ph--sub {
+    height: 100%;
+    min-height: 0;
+}
+
+.stories-dots {
+    display: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.stories-dots li {
+    margin: 0;
+    padding: 0;
+}
+
+.stories-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #d4d0cc;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.stories-dot.is-active {
+    background-color: #232323;
+}
+
+.stories-mid-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: clamp(20px, 2.2vw, 32px);
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.stories-highlight {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.125rem;
+}
+
+.stories-highlight-top {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-width: 0;
+    width: 100%;
+}
+
+.stories-quote-icon {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+}
+
+.stories-quote-text {
+    margin: 0;
+    min-width: 0;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.38;
+    color: #232323;
+}
+
+.stories-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+}
+
+.stories-nav-btn {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid #232323;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.stories-nav-btn:hover {
+    background-color: rgba(35, 35, 35, 0.06);
+}
+
+.stories-nav-btn img {
     display: block;
 }
-.text-box{
+
+.stories-list {
+    flex: 0 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-left: 300px;
-}
-.left-text{
-    color: #A63B03;
-    padding-right: 290px;
-
-}
-.right-text{
-    color: #fff;
-    font-size: 80px;
-
-}
-.center-text{
-    color: #fff;
-    font-size: 80px;
-    margin-right: 20px;
-
-}
-.text-wrap{
-    margin-top: 218px;
-    
+    gap: 1.25rem;
+    box-sizing: border-box;
 }
 
+.stories-preview {
+    margin: 0;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    line-height: 0;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
+.stories-preview img {
+    display: block;
+    width: 165px;
+    max-width: min(165px, 22vw);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-@media(max-width: 768px) {
-        html {
-        font-size: 14px;
+.stories-preview.is-active {
+    border-color: rgba(166, 59, 3, 0.55);
+    box-shadow: 0 0 0 2px rgba(166, 59, 3, 0.15);
+}
+
+.stories-preview:focus-visible {
+    outline: 2px solid #232323;
+    outline-offset: 3px;
+}
+
+/* ----- PC: 1025px 이상 ----- */
+@media (min-width: 1025px) {
+    .stories-inner {
+        --stories-cols: 12;
+        --stories-gutter: 24px;
+        --stories-zone-pad: 21px;
+        display: grid;
+        grid-template-columns: repeat(var(--stories-cols), minmax(0, 1fr));
+        column-gap: var(--stories-gutter);
+        row-gap: 3.75rem;
+        align-items: center;
     }
 
-    /* 모바일 kv 영역 시작 */
+    .stories-title {
+        grid-column: 1 / -1;
+    }
+
+    .stories-body {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 24px;
+        align-items: center;
+    }
+
+    .stories-collage-viewport {
+        grid-column: 1 / span 7;
+    }
+
+    .stories-dots {
+        display: none;
+    }
+
+    .stories-mid-wrap {
+        grid-column: 8 / span 5;
+        padding-left: var(--stories-zone-pad);
+    }
+
+    .stories-highlight {
+        cursor: default;
+    }
+
+    .stories-preview img {
+        max-width: 165px;
+    }
+}
+
+/* ----- 모바일·태블릿: 1024px 이하 (피그마 4컬럼 느낌) ----- */
+@media (max-width: 1024px) {
+    .stories-section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .stories-title {
+        text-align: center;
+        margin-bottom: 1.75rem;
+        font-size: 30px;
+        padding-left: clamp(0.5rem, 3vw, 1rem);
+        padding-right: clamp(0.5rem, 3vw, 1rem);
+    }
+
+    .stories-body {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.25rem;
+        max-width: 28rem;
+        margin: 0 auto;
+    }
+
+    .stories-collage-viewport {
+        width: 100%;
+    }
+
+    .stories-dots {
+        display: flex;
+    }
+
+    .stories-mid-wrap {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding-left: 0;
+    }
+
+    .stories-list {
+        display: none;
+    }
+
+    .stories-highlight {
+        align-items: center;
+    }
+
+    .stories-highlight-top {
+        max-width: 22rem;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    .stories-quote-text {
+        font-size: clamp(15px, 3.6vw, 18px);
+        text-align: left;
+    }
+
+    .stories-nav {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* ========== 병원 소개 (sec16): 3×2 그리드, 셀 427×344, 간격 20px ========== */
+.hospital-intro {
+    padding: 110px clamp(1rem, 2vw, 1.25rem);
+    background-color: #fff;
+    color: #232323;
+    box-sizing: border-box;
+}
+
+.hospital-intro-inner {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.hospital-intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 427px));
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(427px * 3 + 20px * 2);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.hospital-intro-cell {
+    min-width: 0;
+}
+
+.hospital-intro-cell img {
+    display: block;
+    width: 100%;
+    max-width: 427px;
+    height: auto;
+    aspect-ratio: 427 / 344;
+    object-fit: cover;
+    margin-inline: auto;
+}
+
+/* [모바일 전용 블록] 데스크톱에서는 숨김 — 768px 이하에서 표시 */
+.hospital-intro-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* ----- 병원 소개: 모바일 레이아웃(피치 배경 · 탭 · 메인 · 가로 스크롤 썸네일) ----- */
+    .hospital-intro {
+        background-color: #faf6f4;
+        padding-top: 3rem;
+        padding-bottom: 3.25rem;
+    }
+
+    .hospital-intro-grid {
+        display: none;
+    }
+
+    .hospital-intro-mobile {
+        display: block;
+    }
+
+    .hospital-intro-mobile-title {
+        margin: 0 0 1.25rem;
+        text-align: center;
+        font-size: clamp(1.05rem, 3.2vw + 0.5rem, 1.35rem);
+        font-weight: 700;
+        line-height: 1.45;
+        color: #111;
+        padding: 0 clamp(0.75rem, 4vw, 1rem);
+    }
+
+    .hospital-intro-main {
+        width: 100%;
+        border-radius: clamp(14px, 4vw, 22px);
+        overflow: hidden;
+        margin-bottom: 0.75rem;
+        box-sizing: border-box;
+    }
+
+    .hospital-intro-main__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 427 / 344;
+        object-fit: cover;
+    }
+
+    /* [탭] Flexbox: 기본은 균등 분배, 공간 부족 시 가로 스크롤 */
+    .hospital-intro-tabs {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+    }
+
+    .hospital-intro-tab {
+        flex: 1 1 0;
+        min-width: 5.75rem;
+        margin: 0;
+        padding: 0.65rem 0.5rem;
+        border: none;
+        border-radius: 999px;
+        font-size: clamp(0.8125rem, 2vw + 0.55rem, 0.9375rem);
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        background-color: #e8e8ea;
+        color: #111;
+        white-space: nowrap;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .hospital-intro-tab.is-active {
+        background-color: #2f6fde;
+        color: #fff;
+    }
+
+    .hospital-intro-tab:focus-visible {
+        outline: 2px solid #2f6fde;
+        outline-offset: 2px;
+    }
+
+    /* [썸네일 슬라이더] 터치 스와이프 = 가로 스크롤 + flex 간격 */
+    .hospital-intro-thumbs-outer {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+        margin-left: max(-1 * clamp(0.75rem, 4vw, 1rem), -1rem);
+        margin-right: max(-1 * clamp(0.75rem, 4vw, 1rem), -1rem);
+        padding-left: clamp(0.75rem, 4vw, 1rem);
+        padding-right: clamp(0.75rem, 4vw, 1rem);
+        scroll-padding-inline: clamp(0.75rem, 4vw, 1rem);
+    }
+
+    .hospital-intro-thumbs {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 12px;
+        width: max-content;
+        padding: 4px 0 10px;
+    }
+
+    .hospital-thumb {
+        flex: 0 0 auto;
+        width: min(42vw, 200px);
+        max-width: 200px;
+        margin: 0;
+        padding: 0;
+        border: 2px solid transparent;
+        border-radius: clamp(10px, 3vw, 16px);
+        overflow: hidden;
+        cursor: pointer;
+        background: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hospital-thumb.is-active {
+        border-color: #2f6fde;
+    }
+
+    .hospital-thumb:focus-visible {
+        outline: 2px solid #2f6fde;
+        outline-offset: 2px;
+    }
+
+    .hospital-thumb img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 427 / 344;
+        object-fit: cover;
+        pointer-events: none;
+        border-radius: clamp(8px, 2.5vw, 12px);
+    }
+
+    html {
+        font-size: 14px;
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    /* 모바일 KV: 상단은 햄버거만 보이는 바, 본문은 남은 영역 가운데 정렬(겹침 방지) */
     .header {
-        height: 100vh;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
         background-position: 20% center;
     }
 
     .header-inner {
-        padding: 0.4rem 0.6rem 0;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
+        padding: 0 max(0.75rem, env(safe-area-inset-right)) 0 max(0.75rem, env(safe-area-inset-left));
+        padding-top: max(0.35rem, env(safe-area-inset-top));
+        box-sizing: border-box;
     }
 
     .nav {
+        flex-shrink: 0;
+        flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
+        width: 100%;
+        min-height: 3rem;
+        padding: 0.35rem 0 0.5rem;
+        margin: 0;
+        gap: 0;
+        /* 히어로 위에 아이콘만: 배경 없음 */
+        background: transparent;
+        color: #fff;
     }
 
     .nav a {
@@ -365,57 +1300,436 @@ em {
     }
 
     .menu-btn {
-        display: block;
+        display: inline-flex;
+        flex-shrink: 0;
     }
 
     .main-title {
-        padding-top: 0;
-        flex: 1;
+        flex: 1 1 auto;
+        min-height: 0;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
-        padding-bottom: 12vh;
+        text-align: center;
+        padding: clamp(0.75rem, 3vh, 2rem) 0 clamp(1rem, 4vh, 2.5rem);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .title {
-        padding: 0;
+        text-align: center;
+        padding: clamp(0.25rem, 2vh, 1rem) 0;
+        width: 100%;
+        max-width: 24rem;
     }
 
+    /* 768 이하: 타이틀·서브카피만 뷰포트에 따라 축소 (px clamp로 html 폰트 스케일과 분리) */
     .kv-title {
-        font-size: 3rem;
         text-align: center;
-        padding: 1.25rem 0;
-        /* 20px */
+        padding: clamp(0.35rem, 1.5vh, 0.75rem) 0;
+        font-size: clamp(1.75rem, 6vw + 0.85rem, 3rem);
+        line-height: 1.12;
+        word-break: keep-all;
+        overflow-wrap: break-word;
     }
 
-    .kv-subtitle {
-        font-size: 1.5rem;
+    .kv-subtitle.h2 {
         text-align: center;
-        padding: 1.25rem 0;
-        /* 20px */
+        padding: clamp(0.35rem, 1.2vh, 0.75rem) 0;
+        font-size: clamp(0.9375rem, 2.2vw + 0.55rem, 1.25rem);
+        line-height: 1.35;
+        font-weight: 700;
+        word-break: keep-all;
+        overflow-wrap: break-word;
     }
 
     .btn {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
+        align-items: stretch;
+        gap: 0.5rem;
         width: 100%;
-        padding: 1.25rem 0;
-        /* 20px */
+        max-width: 22.5rem;
+        margin: 0 auto;
+        padding: clamp(0.5rem, 2vh, 1.25rem) 0 0;
+        text-align: center;
     }
 
     .btn1,
     .btn2 {
-        font-size: 1rem;
-        padding: 0.5rem 0.5rem;
+        flex: 1 1 0;
+        min-width: 0;
+        min-height: 3rem;
+        font-size: clamp(14px, 2.8vw + 0.35rem, 16px);
+        padding: 0.65rem 0.5rem;
+        box-sizing: border-box;
+        text-align: center;
+        white-space: normal;
     }
 
-
     /* 반응형 kv 영역 마감 */
+
+    /*
+     * 가로 스크롤(검사기 오른쪽 빈 영역) 제거:
+     * 섹션5가 PC용 고정 px(923px 등)라 뷰보다 넓어짐 → 모바일에서만 너비·여백 초기화
+     */
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    /*
+     * 섹션5 모바일: 좌측 텍스트 블록 + 우측 의사 이미지(시안 분할)
+     * 통계: 1행 숫자(우정렬)+고정폭'+' / 2행 라벨 — PC와 동일하게 '+' 열 정렬
+     */
+    .section5 {
+        --section5-doctor-w: min(230px, calc(50% - 0.75rem));
+        --section5-doctor-h: calc(var(--section5-doctor-w) * 514 / 230);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        min-height: max(var(--section5-doctor-h), clamp(18rem, 70vw, 28rem));
+        height: auto;
+        background-position: left center;
+        overflow: hidden;
+    }
+
+    .text-wrap {
+        flex: 1 1 100%;
+        min-width: 0;
+        margin-top: 0;
+        width: 100%;
+        max-width: none;
+        padding-top: 110px;
+        padding-bottom: 110px;
+        padding-left: max(0.85rem, env(safe-area-inset-left));
+        padding-right: calc(var(--section5-doctor-w) + clamp(0.45rem, 2vw, 0.85rem));
+        gap: clamp(0.65rem, 2.2vw, 1.35rem);
+        justify-content: flex-start;
+        overflow-x: visible;
+        overflow-wrap: break-word;
+    }
+
+    .text-box {
+        display: grid;
+        grid-template-columns: 1fr 2.75ch;
+        grid-template-rows: auto auto;
+        column-gap: clamp(0.1rem, 1.2vw, 0.45rem);
+        row-gap: 0.3rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .text-box .center-text {
+        grid-row: 1;
+        grid-column: 1;
+        justify-self: end;
+        text-align: right;
+    }
+
+    .text-box .right-text {
+        grid-row: 1;
+        grid-column: 2;
+        justify-self: start;
+        align-self: baseline;
+    }
+
+    .text-box .left-text {
+        grid-row: 2;
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .text-wrap .left-text p {
+        font-size: clamp(0.8125rem, 1.8vw + 0.45rem, 1.25rem);
+    }
+
+    .center-text p,
+    .right-text p {
+        font-size: clamp(1.15rem, 4.2vw + 0.4rem, 2.5rem);
+    }
+
+    .section5-desc {
+        max-width: 100%;
+        margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .section5-desc p {
+        font-size: clamp(12px, 1.85vw + 0.42rem, 1.05rem);
+        line-height: 1.58;
+        overflow-wrap: anywhere;
+    }
+
+    .section5-sign {
+        max-width: 100%;
+        margin-top: clamp(0.35rem, 1.5vw, 0.85rem);
+        padding-bottom: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .section5-sign-script {
+        font-size: clamp(1.5rem, 5.5vw + 0.5rem, 2.75rem);
+        color: rgba(255, 255, 255, 0.32);
+    }
+
+    .section5-sign-title {
+        font-size: clamp(0.8125rem, 1.65vw + 0.38rem, 1.1rem);
+        margin-top: clamp(-0.65rem, -1.5vw, -0.25rem);
+    }
+
+    .doctor-img {
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+
+    .doctor-img img {
+        object-position: right top;
+    }
+
+    /*
+     * section3 lipo: 768 이하 2×2×1 그리드
+     * 5번째 카드는 한 열 너비만 쓰고 가운데 정렬 (calc는 2열 사이 gap 1개 기준)
+     */
+    .lipo-area {
+        max-width: 100%;
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        box-sizing: border-box;
+    }
+
+    .title-2 {
+        margin-top: clamp(2.25rem, 6vw, 6.875rem);
+        padding-bottom: 110px;
+        padding-inline: 0;
+    }
+
+    .title-2 p {
+        font-size: clamp(16px, 2.2vw + 0.65rem, 1.875rem);
+        line-height: 1.35;
+        word-break: keep-all;
+    }
+
+    .title-2 span {
+        font-size: clamp(15px, 1.6vw + 0.55rem, 1.562rem);
+        display: inline-block;
+        margin-top: 0.35em;
+        word-break: keep-all;
+    }
+
+    .lipo-list {
+        --lipo-gap: clamp(0.625rem, 2.2vw, 1.25rem);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--lipo-gap);
+        justify-content: stretch;
+    }
+
+    .lipo-list .card-item {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lipo-list .card-item img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    .lipo-list .card-item:nth-child(5) {
+        grid-column: 1 / -1;
+        width: calc((100% - var(--lipo-gap)) / 2);
+        max-width: calc((100% - var(--lipo-gap)) / 2);
+        margin-inline: auto;
+    }
+
+    .lipo-list .area-title {
+        padding-top: clamp(0.45rem, 1.8vw, 1rem);
+        text-align: left;
+    }
+
+    .lipo-list .lipo-title {
+        font-size: clamp(16px, 1.8vw + 0.45rem, 1.35rem);
+        line-height: 1.25;
+    }
+
+    .lipo-list .area-title p {
+        font-size: clamp(14px, 1.1vw + 0.55rem, 1rem);
+        line-height: 1.55;
+        word-break: keep-all;
+    }
+
+    /* 좁은 화면에서 <br> 제거에 가깝게 흐름만 정리(본문 최소 14px은 clamp로 보장) */
+    .lipo-list .area-title br {
+        display: none;
+    }
+
+    /*
+     * 장비 시스템 — 768 이하
+     * 1열 스택 + 원형(파랑/핑크)은 가로 배치·가로 겹침(em 비율 유지)
+     * 제목(h3) 한 줄, 본문(b8) 최대 2줄
+     */
+    .equipment-section {
+        padding-top: 110px;
+        padding-bottom: 110px;
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        box-sizing: border-box;
+    }
+
+    .equipment-inner {
+        max-width: 100%;
+    }
+
+    .equipment-heading {
+        margin-bottom: clamp(1.25rem, 3.5vw, 3.75rem);
+    }
+
+    .equipment-heading .b7 {
+        font-size: clamp(1.125rem, 2vw + 0.6rem, 2.5rem);
+        line-height: 1.25;
+        word-break: keep-all;
+    }
+
+    .equipment-body {
+        gap: clamp(1.75rem, 4vw, 3.75rem);
+    }
+
+    .equipment-item.is-active {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: clamp(1.1rem, 2.8vw, 1.75rem);
+        align-items: stretch;
+    }
+
+    .equipment-image {
+        grid-column: 1 / -1;
+    }
+
+    .equipment-image img {
+        width: 100%;
+        max-width: min(100%, 26rem);
+        height: auto;
+        display: block;
+        margin-inline: auto;
+    }
+
+    .equipment-middle {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+        /* 가로 2원 + 겹침(≈24em)이 뷰포트 안에 들어가도록 상한 동적 조절 */
+        font-size: clamp(9px, 1.05vw + 5px, min(16px, calc((100vw - 3rem) / 24)));
+        min-width: 0;
+    }
+
+    .equipment-middle .equipment-circle {
+        width: 13.5em;
+        height: 13.5em;
+        box-sizing: border-box;
+        padding-inline: 0.45em;
+        flex-shrink: 0;
+    }
+
+    .equipment-middle .equipment-circle--blue {
+        z-index: 1;
+    }
+
+    .equipment-middle .equipment-circle--pink {
+        margin-top: 0;
+        margin-left: -3.25em;
+        z-index: 0;
+    }
+
+    .equipment-middle .equipment-circle-x {
+        position: relative;
+        z-index: 2;
+        flex-shrink: 0;
+        margin: 0;
+        margin-left: -0.25em;
+        margin-right: -0.25em;
+        align-self: center;
+        font-size: 1.35em;
+        line-height: 1;
+    }
+
+    .equipment-middle .equipment-circle .b7 {
+        font-size: clamp(11px, 0.82em, 1rem);
+        line-height: 1.2;
+        word-break: keep-all;
+    }
+
+    .equipment-middle .equipment-circle .b9 {
+        font-size: clamp(10px, 0.68em, 0.875rem);
+        line-height: 1.25;
+        word-break: keep-all;
+    }
+
+    .equipment-content {
+        grid-column: 1 / -1;
+        padding-left: 0;
+        min-width: 0;
+    }
+
+    .equipment-text {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .equipment-text .h3 {
+        font-size: clamp(1.125rem, 2.2vw + 0.55rem, 2rem);
+        margin-bottom: clamp(0.6rem, 1.8vw, 1.25rem);
+        line-height: 1.12;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    .equipment-text .b8 {
+        font-size: clamp(14px, 1.25vw + 0.55rem, 1.375rem);
+        line-height: 1.65;
+        margin-bottom: clamp(0.85rem, 2vw, 1.75rem);
+        word-break: keep-all;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .equipment-link-next {
+        font-size: clamp(14px, 1.15vw + 0.5rem, 1.375rem);
+    }
+
+    .equipment-br--desktop {
+        display: none;
+    }
 
     /* about 반응형 시작 */
     .about {
         flex-direction: column-reverse;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .about .model-img {
+        width: min(100%, 18rem);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .text-title {

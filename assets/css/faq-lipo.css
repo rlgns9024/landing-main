@@ -1,0 +1,199 @@
+/**
+ * 지방흡입 FAQ 섹션 — 배경 #FAF6F3, 반응형 아코디언
+ * (index.html + faq-lipo.js 와 함께 사용)
+ */
+
+.faq-lipo {
+    background-color: #faf6f3;
+    color: #2a2118;
+    padding: clamp(3rem, 8vw, 5.5rem) clamp(1rem, 4vw, 1.5rem);
+    box-sizing: border-box;
+}
+
+.faq-lipo-inner {
+    width: min(92%, 56rem);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* ----- 제목 영역 (중앙 정렬) ----- */
+.faq-lipo-header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.faq-lipo-label {
+    margin: 0 0 0.65rem;
+    font-size: clamp(0.7rem, 1.5vw + 0.55rem, 0.8125rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4a3f35;
+}
+
+.faq-lipo-title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.faq-lipo-title-main {
+    font-size: clamp(1.65rem, 4vw + 0.85rem, 2.35rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #1a1410;
+}
+
+.faq-lipo-title-sub {
+    font-size: clamp(1.05rem, 2.2vw + 0.65rem, 1.35rem);
+    font-weight: 700;
+    line-height: 1.35;
+    color: #2a2118;
+}
+
+/* ----- 질문 리스트 ----- */
+.faq-lipo-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.faq-lipo-item {
+    border-radius: clamp(10px, 2vw, 14px);
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid rgba(42, 33, 24, 0.08);
+    box-shadow: 0 2px 12px rgba(42, 33, 24, 0.06);
+}
+
+.faq-lipo-trigger {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(0.75rem, 2.5vw, 1.1rem);
+    width: 100%;
+    margin: 0;
+    padding: clamp(0.85rem, 2.2vw, 1.15rem) clamp(1rem, 3vw, 1.35rem);
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.faq-lipo-trigger:focus-visible {
+    outline: 2px solid #5c4d3d;
+    outline-offset: 2px;
+}
+
+/* Q 원형 아이콘 */
+.faq-lipo-qmark {
+    flex-shrink: 0;
+    width: clamp(2rem, 5vw, 2.5rem);
+    height: clamp(2rem, 5vw, 2.5rem);
+    border-radius: 50%;
+    background-color: #2a2118;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.8rem, 1.8vw + 0.55rem, 0.95rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.faq-lipo-qtext {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: clamp(0.875rem, 1.5vw + 0.65rem, 1.0625rem);
+    font-weight: 600;
+    line-height: 1.45;
+    color: #1a1410;
+    word-break: keep-all;
+}
+
+/* ∨ 화살표 — 열림 시 위쪽으로 회전 */
+.faq-lipo-icon-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.faq-lipo-icon {
+    display: block;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid #3d3229;
+    border-bottom: 2px solid #3d3229;
+    transform: rotate(45deg);
+    margin-top: -0.2rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-lipo-item.is-open .faq-lipo-icon {
+    transform: rotate(-135deg);
+    margin-top: 0.15rem;
+}
+
+/* ----- 답변 패널 ----- */
+.faq-lipo-panel {
+    display: none;
+    overflow: hidden;
+}
+
+.faq-lipo-panel-inner {
+    padding: 0 clamp(1rem, 3vw, 1.35rem) clamp(1rem, 2.5vw, 1.25rem);
+    padding-left: calc(clamp(1rem, 3vw, 1.35rem) + clamp(2rem, 5vw, 2.5rem) + clamp(0.75rem, 2.5vw, 1.1rem));
+    border-top: 1px solid rgba(42, 33, 24, 0.06);
+}
+
+@media (max-width: 480px) {
+    .faq-lipo-panel-inner {
+        padding-left: clamp(1rem, 3vw, 1.35rem);
+    }
+}
+
+.faq-lipo-answer {
+    margin: 0;
+    font-size: clamp(0.8125rem, 1.2vw + 0.65rem, 0.9375rem);
+    line-height: 1.65;
+    color: #4a3f35;
+}
+
+/* ----- 반응형: 좁은 화면에서 박스 폭·타이포 ----- */
+@media (max-width: 768px) {
+    .faq-lipo-inner {
+        width: min(95%, 100%);
+    }
+
+    .faq-lipo-title-main {
+        font-size: clamp(1.45rem, 5vw + 0.65rem, 1.85rem);
+    }
+
+    .faq-lipo-title-sub {
+        font-size: clamp(0.95rem, 3vw + 0.55rem, 1.15rem);
+    }
+
+    .faq-lipo-qtext {
+        font-size: clamp(0.8125rem, 2vw + 0.55rem, 0.95rem);
+    }
+}
+
+@media (max-width: 380px) {
+    .faq-lipo {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
+    .faq-lipo-inner {
+        width: 100%;
+    }
+}

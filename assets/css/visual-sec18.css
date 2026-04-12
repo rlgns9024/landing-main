@@ -1,0 +1,96 @@
+/**
+ * 비주얼 텍스트 섹션 (sec-18) — PC: 타이틀(카피)과 이미지 분리
+ * 카피 블록 아래 50px 간격으로 이미지 배치
+ */
+
+.visual-sec18 {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #434343;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 4vw, 3rem);
+}
+
+.visual-sec18-inner {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.visual-sec18-copy {
+    margin: 0 auto;
+    max-width: 56rem;
+}
+
+/* ----- 제목(1·2줄): 30px, regular — 강조 구간만 별도 클래스 ----- */
+.visual-sec18-head {
+    margin: 0 0 1.25rem;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: #434343;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.visual-sec18-head-line1,
+.visual-sec18-head-line2 {
+    display: inline;
+}
+
+/* [강조] '지방흡입 특화 병원' 전용 — 색·볼드 */
+.visual-sec18-accent {
+    color: #718cfc;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* ----- 설명(3줄): 18px, line-height 1.6 ----- */
+.visual-sec18-desc {
+    margin: 0 auto;
+    max-width: 36rem;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #434343;
+    word-break: keep-all;
+}
+
+/* ----- 이미지: 카피 블록 전체 아래 50px ----- */
+.visual-sec18-media {
+    margin-top: 50px;
+}
+
+.visual-sec18-photo {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ----- 768px 이하: 타이포 축소 ----- */
+@media (max-width: 768px) {
+    .visual-sec18-head {
+        font-size: 24px;
+        line-height: 1.38;
+    }
+
+    .visual-sec18-desc {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 400px) {
+    .visual-sec18-head {
+        font-size: 21px;
+    }
+
+    .visual-sec18-desc {
+        font-size: 15px;
+    }
+}
