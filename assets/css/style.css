@@ -724,26 +724,17 @@ em {
     box-sizing: border-box;
 }
 
-/* 슬라이드 트랙 */
+/* 왼쪽 콜라주: 단일 뷰 + 페이드 래퍼 */
 .stories-collage-viewport {
     min-width: 0;
     overflow: hidden;
     border-radius: 18px;
 }
 
-.stories-collage-track {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 300%;
-    transition: transform 0.45s ease;
-    will-change: transform;
-}
-
-.stories-collage-slide {
-    flex: 0 0 calc(100% / 3);
-    width: calc(100% / 3);
+.stories-collage-fade {
+    width: 100%;
     box-sizing: border-box;
+    opacity: 1;
 }
 
 /* 모바일 시안(2번): 왼쪽 큰 세로 + 오른쪽 2장(합쳐서 왼쪽과 동일 높이, 반씩 분할) */
@@ -865,6 +856,30 @@ em {
     gap: 1.125rem;
 }
 
+.stories-profile-meta {
+    margin: 0;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #232323;
+}
+
+.stories-profile-name {
+    font-weight: 700;
+}
+
+.stories-profile-sep {
+    margin: 0 0.35em;
+    font-weight: 400;
+    color: #8a8580;
+}
+
+.stories-profile-area {
+    font-weight: 500;
+    color: #5c5854;
+}
+
 .stories-highlight-top {
     display: flex;
     flex-direction: row;
@@ -915,6 +930,13 @@ em {
 
 .stories-nav-btn img {
     display: block;
+}
+
+.stories-list-outer {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .stories-list {
@@ -1044,12 +1066,43 @@ em {
         padding-left: 0;
     }
 
+    /* 모바일: 4명 프로필 가로 스크롤(작은 썸네일 + 간격 조정) */
+    .stories-list-outer {
+        width: 100%;
+        padding: 0 clamp(0.25rem, 2vw, 0.5rem);
+        box-sizing: border-box;
+    }
+
     .stories-list {
-        display: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0.35rem 0 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .stories-preview {
+        flex: 0 0 auto;
+    }
+
+    .stories-preview img {
+        width: 76px;
+        max-width: 76px;
     }
 
     .stories-highlight {
         align-items: center;
+    }
+
+    .stories-profile-meta {
+        text-align: center;
+        font-size: clamp(15px, 3.8vw, 17px);
     }
 
     .stories-highlight-top {
