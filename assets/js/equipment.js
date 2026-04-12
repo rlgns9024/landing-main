@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     showItem(currentIndex);
   });
 
-  // 초기 상태
   showItem(currentIndex);
 });
 
